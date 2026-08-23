@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create a clean, ATS-friendly resume for free. Built for Indian students and freshers." />
+    <meta name="theme-color" content="#155eef" />
+    <title>ResumeKit India — Free Fresher Resume Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top"><span>R</span> ResumeKit <em>India</em></a>
+      <a class="header-link" href="#builder">Build your resume <span>→</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">For students & freshers</p>
+          <h1>Your next opportunity<br /><i>starts here.</i></h1>
+          <p class="hero-text">Create a sharp, ATS-friendly resume in minutes. No signup. No clutter. Completely free.</p>
+          <a class="button" href="#builder">Make my resume <span>→</span></a>
+          <p class="micro-copy">Built for Indian college students & first-job seekers</p>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="resume-mini">
+            <div class="mini-top"><span class="mini-avatar"></span><div><b>Aarav Sharma</b><small>Computer Science Student</small></div></div>
+            <div class="mini-line wide"></div><div class="mini-line"></div>
+            <h6>EDUCATION</h6><div class="mini-line wide"></div><div class="mini-line medium"></div>
+            <h6>SKILLS</h6><div class="mini-tags"><span>Python</span><span>UI Design</span><span>SQL</span></div>
+          </div>
+          <div class="floating-note">✓ ATS-friendly format</div>
+        </div>
+      </section>
+
+      <section class="builder-section" id="builder">
+        <div class="section-heading"><p class="eyebrow">Free resume builder</p><h2>Fill it in. Make it yours.</h2><p>Your details stay in this browser. Download a PDF when you are ready.</p></div>
+        <div class="builder-layout">
+          <form class="form-card" id="resume-form">
+            <div class="form-title"><span>01</span><h3>Your details</h3></div>
+            <div class="two-col">
+              <label>Full name<input id="name" placeholder="e.g. Aarav Sharma" value="Aarav Sharma" /></label>
+              <label>Target role<input id="role" placeholder="e.g. BCA Student" value="Computer Science Student" /></label>
+            </div>
+            <label>Email address<input id="email" type="email" placeholder="you@email.com" value="aarav.sharma@email.com" /></label>
+            <label>Phone number<input id="phone" placeholder="+91 98765 43210" value="+91 98765 43210" /></label>
+            <label>City, State<input id="location" placeholder="e.g. Pune, Maharashtra" value="Pune, Maharashtra" /></label>
+
+            <div class="form-title"><span>02</span><h3>About you</h3></div>
+            <label>Professional summary<textarea id="summary" rows="4" placeholder="Write 2–3 lines about your strengths and goals.">Motivated computer science student with a strong foundation in web development and problem-solving. Looking for an internship where I can learn fast and contribute meaningful work.</textarea></label>
+
+            <div class="form-title"><span>03</span><h3>Education</h3></div>
+            <label>Degree, college & year<textarea id="education" rows="3" placeholder="BCA — XYZ College (2023–2026)&#10;CGPA: 8.4/10">B.Tech in Computer Science — Pune University (2023–2027)
+CGPA: 8.4/10</textarea></label>
+
+            <div class="form-title"><span>04</span><h3>Skills & projects</h3></div>
+            <label>Skills <input id="skills" placeholder="Python, Figma, Excel" value="Python, JavaScript, SQL, Figma, Problem solving" /></label>
+            <label>Project highlight<textarea id="project" rows="4" placeholder="Project name — what you built and its impact.">Campus Connect — Built a student event discovery web app using HTML, CSS and JavaScript. Used by 60+ students in a college project showcase.</textarea></label>
+            <button class="button full-button" type="button" id="download">Download as PDF <span>↓</span></button>
+          </form>
+
+          <aside class="preview-wrap">
+            <p class="preview-label">Live preview</p>
+            <article class="resume-paper" id="resume-paper">
+              <header class="resume-header"><h1 id="preview-name">Aarav Sharma</h1><p id="preview-role">Computer Science Student</p><div id="preview-contact">Pune, Maharashtra · +91 98765 43210 · aarav.sharma@email.com</div></header>
+              <section><h2>Profile</h2><p id="preview-summary">Motivated computer science student with a strong foundation in web development and problem-solving. Looking for an internship where I can learn fast and contribute meaningful work.</p></section>
+              <section><h2>Education</h2><p id="preview-education" class="preserve-lines">B.Tech in Computer Science — Pune University (2023–2027)
+CGPA: 8.4/10</p></section>
+              <section><h2>Skills</h2><div class="skill-list" id="preview-skills"></div></section>
+              <section><h2>Projects</h2><p id="preview-project" class="preserve-lines">Campus Connect — Built a student event discovery web app using HTML, CSS and JavaScript. Used by 60+ students in a college project showcase.</p></section>
+            </article>
+            <p class="preview-tip">Tip: Use one page, simple language, and skills you can explain in an interview.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="tips"><p class="eyebrow">Made for first opportunities</p><h2>What makes a strong fresher resume?</h2><div class="tip-grid"><article><b>01</b><h3>Keep it focused</h3><p>One clear role and one clean page is stronger than a long, generic resume.</p></article><article><b>02</b><h3>Show proof</h3><p>Projects, courses and college work show what you can actually do.</p></article><article><b>03</b><h3>Use real keywords</h3><p>Match the relevant skills and tools named in the job description.</p></article></div></section>
+    </main>
+    <footer>ResumeKit India <span>·</span> Build with clarity. Apply with confidence.</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
