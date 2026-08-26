@@ -49,4 +49,26 @@ document.getElementById("generate-letter").addEventListener("click", () => {
   document.getElementById("letter-result").value = `Dear Hiring Team at ${company},\n\nI am writing to apply for the ${role} position. As a ${text("role") || "student and fresher"}, I am interested in contributing my skills in ${skill}.\n\nThrough ${project}, I have developed practical experience and learned to communicate, solve problems, and improve my work through feedback. I am eager to bring this mindset to ${company} and learn from your team.\n\nThank you for considering my application. I would welcome the opportunity to discuss how I can contribute.\n\nSincerely,\n${name}`;
 });
 document.getElementById("copy-letter").addEventListener("click", async () => { const output = document.getElementById("letter-result"); if (!output.value) return; await navigator.clipboard.writeText(output.value); document.getElementById("copy-letter").textContent = "Copied"; setTimeout(() => { document.getElementById("copy-letter").textContent = "Copy draft"; }, 1600); });
+
+const ignoredWords = new Set(["and", "the", "for", "with", "that", "this", "you", "your", "are", "our", "from", "have", "will", "who", "but", "not", "all", "job", "role", "work", "team", "their", "about", "into", "using", "looking", "skills", "skill", "experience", "candidate", "intern", "internship", "years", "year", "able", "required", "responsibilities", "requirements"]);
+function keywords(value) { return [...new Set((value.toLowerCase().match(/[a-z][a-z+#.-]{1,}/g) || []).filter(word => !ignoredWords.has(word)))]; }
+document.getElementById("match-keywords").addEventListener("click", () => {
+  const jobWords = keywords(text("job-description"));
+  const resumeWords = new Set(keywords([text("role"), text("summary"), text("skills"), text("project")].join(" ")));
+  const matched = jobWords.filter(word => resumeWords.has(word)).slice(0, 12);
+  const missing = jobWords.filter(word => !resumeWords.has(word)).slice(0, 12);
+  const result = document.getElementById("match-result");
+  if (!jobWords.length) { result.innerHTML = "<p>Add a job description first.</p>"; return; }
+  result.innerHTML = `<p><strong>${matched.length} relevant terms found.</strong> Add a missing term only when it truthfully describes your skills or project work.</p><div class="match-columns"><div><h3>Already in your resume</h3><p>${matched.length ? matched.map(escapeHTML).join(" · ") : "No clear matches yet."}</p></div><div><h3>Consider if true</h3><p>${missing.length ? missing.map(escapeHTML).join(" · ") : "Great coverage for this description."}</p></div></div>`;
+});
+
+async function shareSite() {
+  const shareData = { title: "ResuKite — Free Fresher Resume Builder", text: "Build a free ATS-friendly resume for internships and first jobs.", url: "https://resukite.github.io/" };
+  if (navigator.share) { try { await navigator.share(shareData); return; } catch (_) { /* A cancelled share should not show an error. */ } }
+  await navigator.clipboard.writeText(shareData.url);
+  document.getElementById("share-site").textContent = "Link copied";
+  setTimeout(() => { document.getElementById("share-site").innerHTML = "Share ResuKite <span>↗</span>"; }, 1600);
+}
+document.getElementById("share-site").addEventListener("click", shareSite);
+document.getElementById("copy-site-link").addEventListener("click", async () => { await navigator.clipboard.writeText("https://resukite.github.io/"); const button = document.getElementById("copy-site-link"); button.textContent = "Copied"; setTimeout(() => { button.textContent = "Copy site link"; }, 1600); });
 updatePreview();
